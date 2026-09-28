@@ -1,0 +1,133 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--color-border);
+
+  // A pseudo-element carries the blur/translucency instead of the .navbar
+  // element itself, because `backdrop-filter` makes its host a containing
+  // block for `position: fixed` descendants (the mobile menu panel below),
+  // which would otherwise anchor it to the 72px bar instead of the viewport.
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: color-mix(in srgb, var(--color-bg) 85%, transparent);
+    backdrop-filter: blur(10px);
+  }
+
+  &__inner {
+    @include container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--color-text);
+  }
+
+  &__logo {
+    width: 28px;
+    height: 28px;
+    border-radius: $radius-sm;
+    background: var(--gradient-brand);
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: $spacing-lg;
+    font-weight: 500;
+    font-size: 0.95rem;
+
+    a {
+      color: var(--color-text-muted);
+      transition: color 150ms ease;
+
+      &:hover {
+        color: var(--color-text);
+      }
+    }
+
+    @include respond-down($breakpoint-md) {
+      position: fixed;
+      inset: 72px 0 0 0;
+      background: var(--color-bg);
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: $spacing-md;
+      transform: translateY(-8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease;
+
+      a {
+        padding: $spacing-md 0;
+        border-bottom: 1px solid var(--color-border);
+        color: var(--color-text);
+      }
+
+      &--open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    &--mobile {
+      display: none;
+      margin-top: $spacing-md;
+
+      @include respond-down($breakpoint-md) {
+        display: flex;
+      }
+    }
+
+    &--desktop {
+      @include respond-down($breakpoint-md) {
+        display: none;
+      }
+    }
+  }
+
+  &__toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    span {
+      display: block;
+      height: 2px;
+      background: var(--color-text);
+      border-radius: 2px;
+    }
+
+    @include respond-down($breakpoint-md) {
+      display: flex;
+    }
+  }
+}

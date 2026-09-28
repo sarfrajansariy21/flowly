@@ -1,0 +1,62 @@
+// Static build-time values
+$font-family-base: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 2rem;
+$spacing-xl: 4rem;
+$spacing-2xl: 6rem;
+
+$max-width: 1200px;
+
+$radius-sm: 8px;
+$radius-md: 14px;
+$radius-lg: 24px;
+
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+
+// Theme colors as CSS custom properties so dark mode can react at runtime
+// (SCSS variables are resolved at compile time and can't respond to
+// prefers-color-scheme on their own).
+:root {
+  --color-bg: #ffffff;
+  --color-bg-alt: #f7f8fb;
+  --color-surface: #ffffff;
+  --color-text: #16192b;
+  --color-text-muted: #5b6072;
+  --color-border: #e6e8f0;
+
+  --color-primary: #5b5bf6;
+  --color-primary-hover: #4747e0;
+  --color-primary-soft: #eef0ff;
+  --color-accent: #17c3a2;
+
+  --gradient-brand: linear-gradient(135deg, #6a5bf6 0%, #5b5bf6 45%, #17c3a2 100%);
+  --shadow-sm: 0 1px 2px rgba(16, 19, 41, 0.06);
+  --shadow-md: 0 8px 24px rgba(16, 19, 41, 0.08);
+  --shadow-lg: 0 20px 48px rgba(16, 19, 41, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0f1120;
+    --color-bg-alt: #151833;
+    --color-surface: #1a1d3a;
+    --color-text: #f2f3f9;
+    --color-text-muted: #a4a8c2;
+    --color-border: #2a2e52;
+
+    --color-primary: #8b85ff;
+    --color-primary-hover: #a29bff;
+    --color-primary-soft: rgba(139, 133, 255, 0.14);
+    --color-accent: #2fe0bc;
+
+    --gradient-brand: linear-gradient(135deg, #7a6bff 0%, #8b85ff 45%, #2fe0bc 100%);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.45);
+  }
+}

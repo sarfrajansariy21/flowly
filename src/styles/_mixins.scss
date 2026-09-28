@@ -1,0 +1,24 @@
+@use './variables' as *;
+
+@mixin container {
+  width: 100%;
+  max-width: $max-width;
+  margin-inline: auto;
+  padding-inline: $spacing-lg;
+
+  @media (max-width: $breakpoint-md) {
+    padding-inline: $spacing-md;
+  }
+}
+
+@mixin respond-up($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin respond-down($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}

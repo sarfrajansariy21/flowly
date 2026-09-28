@@ -1,0 +1,135 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.pricing {
+  padding-block: $spacing-2xl;
+  background: var(--color-bg-alt);
+
+  &__inner {
+    @include container;
+  }
+
+  &__heading {
+    text-align: center;
+    max-width: 50ch;
+    margin-inline: auto;
+    margin-bottom: $spacing-2xl;
+
+    h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      margin-top: $spacing-sm;
+    }
+
+    p {
+      margin-top: $spacing-md;
+      color: var(--color-text-muted);
+    }
+  }
+
+  &__eyebrow {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-lg;
+    align-items: start;
+
+    @include respond-down($breakpoint-lg) {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin-inline: auto;
+    }
+  }
+
+  &__card {
+    position: relative;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: $radius-md;
+    padding: $spacing-lg;
+    box-shadow: var(--shadow-sm);
+
+    &--highlighted {
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-lg);
+      transform: scale(1.03);
+
+      @include respond-down($breakpoint-lg) {
+        transform: none;
+      }
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+  }
+
+  &__tag {
+    position: absolute;
+    top: -14px;
+    left: $spacing-lg;
+    background: var(--gradient-brand);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+  }
+
+  &__description {
+    margin-top: $spacing-sm;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    min-height: 2.7em;
+  }
+
+  &__price {
+    display: flex;
+    align-items: baseline;
+    gap: $spacing-xs;
+    margin-top: $spacing-lg;
+  }
+
+  &__amount {
+    font-size: 2.25rem;
+    font-weight: 800;
+  }
+
+  &__period {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+  }
+
+  &__cta {
+    width: 100%;
+    margin-top: $spacing-lg;
+  }
+
+  &__features {
+    margin-top: $spacing-lg;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+
+      span {
+        color: var(--color-accent);
+        font-weight: 700;
+      }
+    }
+  }
+}

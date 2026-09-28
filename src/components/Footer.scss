@@ -1,0 +1,78 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.footer {
+  border-top: 1px solid var(--color-border);
+  padding-block: $spacing-2xl $spacing-lg;
+
+  &__inner {
+    @include container;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    gap: $spacing-2xl;
+    flex-wrap: wrap;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-text);
+  }
+
+  &__logo {
+    width: 24px;
+    height: 24px;
+    border-radius: $radius-sm;
+    background: var(--gradient-brand);
+  }
+
+  &__columns {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: $spacing-2xl;
+
+    @include respond-down($breakpoint-md) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $spacing-lg;
+      width: 100%;
+    }
+  }
+
+  &__column {
+    h4 {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      margin-bottom: $spacing-md;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-sm;
+    }
+
+    a {
+      font-size: 0.9rem;
+      color: var(--color-text);
+      transition: color 150ms ease;
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  &__bottom {
+    margin-top: $spacing-2xl;
+    padding-top: $spacing-lg;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+}

@@ -1,0 +1,88 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.features {
+  padding-block: $spacing-2xl;
+  background: var(--color-bg-alt);
+
+  &__inner {
+    @include container;
+  }
+
+  &__heading {
+    max-width: 60ch;
+    margin-inline: auto;
+    text-align: center;
+    margin-bottom: $spacing-2xl;
+
+    h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      margin-top: $spacing-sm;
+    }
+
+    p {
+      margin-top: $spacing-md;
+      color: var(--color-text-muted);
+      font-size: 1.05rem;
+    }
+  }
+
+  &__eyebrow {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-lg;
+
+    @include respond-down($breakpoint-lg) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-down($breakpoint-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: $radius-md;
+    padding: $spacing-lg;
+    box-shadow: var(--shadow-sm);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin-top: $spacing-md;
+    }
+
+    p {
+      margin-top: $spacing-sm;
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+    }
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: $radius-sm;
+    background: var(--color-primary-soft);
+    font-size: 1.3rem;
+  }
+}

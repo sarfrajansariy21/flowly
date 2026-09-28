@@ -1,0 +1,51 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.cta {
+  padding-block: $spacing-2xl;
+
+  &__inner {
+    @include container;
+    background: var(--gradient-brand);
+    border-radius: $radius-lg;
+    padding: $spacing-2xl $spacing-lg;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: var(--shadow-lg);
+
+    h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+    }
+
+    p {
+      margin-top: $spacing-md;
+      opacity: 0.9;
+      font-size: 1.05rem;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $spacing-sm;
+    margin-top: $spacing-xl;
+
+    .btn--primary {
+      background: #ffffff;
+      color: var(--color-primary);
+      box-shadow: none;
+    }
+
+    .btn--ghost {
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+
+      &:hover {
+        color: #ffffff;
+        border-color: #ffffff;
+      }
+    }
+  }
+}

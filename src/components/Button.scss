@@ -1,0 +1,52 @@
+@use '../styles/variables' as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  padding: 0.85rem 1.5rem;
+  border-radius: $radius-sm;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease,
+    border-color 150ms ease, color 150ms ease;
+  white-space: nowrap;
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &--primary {
+    background: var(--gradient-brand);
+    color: #ffffff;
+    box-shadow: var(--shadow-md);
+
+    &:hover {
+      box-shadow: var(--shadow-lg);
+    }
+  }
+
+  &--secondary {
+    background: var(--color-surface);
+    color: var(--color-text);
+    border-color: var(--color-border);
+    box-shadow: var(--shadow-sm);
+
+    &:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: var(--color-text);
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
